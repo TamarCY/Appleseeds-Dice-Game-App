@@ -2,9 +2,9 @@ import react from "react";
 
 
 class GameApp extends react.Component {
-    constructor(){
-        super()
-    }
+    // constructor(){
+    //     super()
+    // }
     render (){
         return (
         <div>GameApp component</div>
