@@ -6,7 +6,9 @@ class GameApp extends react.Component {
         super()
     }
     render (){
-        <div>GameApp</div>
+        return (
+        <div>GameApp component</div>
+        )
     }
 }
 
