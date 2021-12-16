@@ -1,10 +1,10 @@
 import './App.css';
+import GameApp from './Pages/GameApp/GameApp';
+ Í
 
 function App() {
   return (
-    <div className="App">
-          <div>HELLO0000</div>
-    </div>
+    <GameApp/>
   );
 }
 
