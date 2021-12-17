@@ -9,7 +9,7 @@ class GameApp extends react.Component {
     constructor() {
         super();
         this.state = {
-            pointsToWin: 100,
+            pointsToWin: 20,
             dices: [null, null],
             activePlayer: "player1",
             gameOver: false,
@@ -39,14 +39,6 @@ class GameApp extends react.Component {
     }
 
     newGame = () => {
-        this.setState(
-            (prevState) =>
-            ({
-                dices: prevState.dices.map((el) =>
-                    (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
-                )
-            })
-        )
         this.setState((prevState) => ({
             players: {
                 ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
@@ -66,7 +58,6 @@ class GameApp extends react.Component {
                 }
             },
             dices: prevState.dices.map((el) => (null))
-
         }
         )
         )
@@ -78,8 +69,8 @@ class GameApp extends react.Component {
             (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
         )
         const dicesSum = dicesResult.reduce((prev, curr) => prev + curr);
-        const player = this.state.activePlayer;
-        const playerCurrentScore = this.state.players[player].currentScore + dicesSum;
+        const currentPlayer = this.state.activePlayer;
+        const playerCurrentScore = this.state.players[currentPlayer].currentScore + dicesSum;
 
         // TODO: change to reusable and not hard coded
         if (dicesResult[0] === 6 && dicesResult[1] === 6) {
@@ -89,8 +80,8 @@ class GameApp extends react.Component {
                 dices: dicesResult,
                 players: {
                     ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
-                    [player]: {
-                        ...prevState.players[player],
+                    [currentPlayer]: {
+                        ...prevState.players[currentPlayer],
                         currentScore: playerCurrentScore
                     }
                 }
@@ -101,20 +92,70 @@ class GameApp extends react.Component {
         console.log(dicesResult)
 
 
-        // this.setState(   
-        //     (prevState) =>
-        //     ({
-        //         dices: prevState.dices.map((el) =>
-        //             (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
-        //         )
-        //     }), () => (console.log(this.state.dices[0]))
-        // )
-        // console.log("in the roll dice func", this.props) // TODO: why is this empty?
+
+    }
+
+    gameOver = () => {
+        console.log("The winner is", this.state.activePlayer)
+        // TODO: change this.newGame() to reset code. maybe disable the roll and hold buttons, or make them disappear
+        this.newGame()
+    }
+
+    isWinner = () => {
+        this.state.players[this.state.activePlayer] > this.state.pointsToWin ?
+            console.log("The winner is", this.state.activePlayer):
+            console.log ("no")
+        //gameReset
     }
 
 
+
     hold = () => {
-        this.setState({ gameOver: true }, () => { console.log(this.state.gameOver) });
+
+        // TODO: change to no vars?
+        const currentPlayer = this.state.activePlayer;
+        const notCurrentPlayer = (currentPlayer === "player1")? "player2": "player1"
+        const currentSumScore = this.state.players[currentPlayer].currentScore + this.state.players[currentPlayer].sumScore
+        // TODO: can I change the 2 long this.setStates?
+        if (currentSumScore > this.state.pointsToWin) {
+            this.setState((prevState) => ({
+                players: {
+                    ...prevState.players,
+                    [currentPlayer]: {
+                        ...prevState.players[currentPlayer],
+                        sumScore: currentSumScore,
+                    }
+                }
+
+            }))
+            this.gameOver()
+
+        } else {
+            this.setState((prevState) => ({
+                players: {
+                    ...prevState.players,
+                    [currentPlayer]: {
+                        ...prevState.players[currentPlayer],
+                        sumScore: currentSumScore,
+                        currentScore: 0,
+                        isActive: false
+                    },
+                    [notCurrentPlayer]: {
+                        ...prevState.players[notCurrentPlayer],
+                        isActive: true
+                    }
+
+                },
+                activePlayer: notCurrentPlayer,
+
+
+            }))
+            
+        }
+
+
+
+
     }
 
 
