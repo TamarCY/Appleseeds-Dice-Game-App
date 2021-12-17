@@ -38,24 +38,33 @@ class GameApp extends react.Component {
     }
     
     newGame = () => {
+        this.setState(   
+            (prevState) =>
+            ({
+                dices: prevState.dices.map((el) =>
+                    (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
+                )
+            })
+        )
         this.setState((prevState) => ({
             players: {
                 ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
                 player1: {
-                    ...prevState.player1,
+                    ...prevState.players.player1,
                     currentScore: 0,
                     sumScore: 0,
                     isActive: true,
                     isWinner: false
                 },
                 player2: {
-                    ...prevState.player2,
+                    ...prevState.players.player2,
                     currentScore: 0,
                     sumScore: 0,
                     isActive: false,
                     isWinner: false
                 }
-            }
+            },
+            dices: prevState.dices.map((el)=>(null))
 
         }
         )
