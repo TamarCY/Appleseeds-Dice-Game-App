@@ -2,12 +2,23 @@ import react from "react";
 
 
 class Player extends react.Component {
-    // constructor(){
-    //     super()
-    // }
+    constructor(props){
+        super(props)
+    }
     render (){
+        console.log(this.props.playerData)
         return (
-        <div>i am a player</div>
+            <div>
+            <div>
+                player {this.props.playerData.id}
+            </div>
+            <div>
+                current {this.props.playerData.currentScore}
+            </div>
+            <div>
+                sum {this.props.playerData.sumScore}
+            </div>
+            </div>
         )
     }
 }

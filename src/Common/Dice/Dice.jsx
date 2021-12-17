@@ -1,8 +1,10 @@
 import "./Dice.css"
+// import "./assets/images/dice"
 
 function Dice () {
     return (
-        <div>Dice</div>
+        // <img src="./assets" alt="dice image" />
+        <div className="Dice-image" ></div>
     )
 }
 

@@ -3,13 +3,13 @@ import Dice from "../../../Common/Dice/Dice";
 
 
 class GameBoard extends react.Component {
-    // constructor(){
-    //     super()
-    // }
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
             <div>
-                <div>GameBoard</div>
+                <div>GameBoard {this.props.test}</div>
                 <Dice />
                 <Dice />
             </div>
