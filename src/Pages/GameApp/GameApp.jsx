@@ -31,8 +31,13 @@ class GameApp extends react.Component {
         }
     }
 
+    callBackFunctions = (event) => {
+        event.target.id === "newGame" && this.newGame();
+        event.target.id === "rollDice" && this.rollDice();
+        event.target.id === "hold" && this.hold();
+    }
+    
     newGame = () => {
-        console.log("new game")
         this.setState((prevState) => ({
             players: {
                 ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
@@ -67,18 +72,20 @@ class GameApp extends react.Component {
                 )
             })
         )
-        // console.log("in the roll dice func", this.props) //why is this empty?
+        // console.log("in the roll dice func", this.props) // TODO: why is this empty?
     }
 
 
-
+    hold = () => {
+        console.log ("hold")
+    }
 
 
     render() {
         return (
             <div className="GameApp">
                 <Player playerData={this.state.players.player1} />
-                <GameBoard newGame={this.rollDice} dices={this.state.dices}/>
+                <GameBoard callBack={this.callBackFunctions} dices={this.state.dices}/>
                 <Player playerData={this.state.players.player2} />
             </div>
         )

@@ -3,7 +3,6 @@ import "./Dice.css"
 
 function Dice () {
     return (
-        // <img src="./assets" alt="dice image" />
         <div className="Dice-image" ></div>
     )
 }
