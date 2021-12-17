@@ -10,24 +10,57 @@ class GameApp extends react.Component {
             pointsToWin: 100,
             dices: [null, null],
             gameOver: false,
-            players: [
-                {
+            players: {
+                player1: {
                     id: 1,
-                    currentScore: 0,
+                    currentScore: 5,
                     sumScore: 0,
-                    isActive: false,
+                    isActive: true,
                     isWinner: false
                 },
-                {
+                player2: {
                     id: 2,
+                    currentScore: 2,
+                    sumScore: 0,
+                    isActive: false,
+                    isWinner: false
+                }
+            }
+        }
+    }
+
+    newGame = () => {
+        this.setState((prevState) => ({
+            players: {
+                ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
+                player1: {
+                    ...prevState.player1,
+                    currentScore: 0,
+                    sumScore: 0,
+                    isActive: true,
+                    isWinner: false
+                },
+                player2: {
+                    ...prevState.player2,
                     currentScore: 0,
                     sumScore: 0,
                     isActive: false,
                     isWinner: false
-                }]
+                }
+            }
 
         }
+        )
+        )
     }
+
+
+    
+
+
+
+   
+
     render() {
         return (
             <>
@@ -35,11 +68,13 @@ class GameApp extends react.Component {
 
                 </div>
                 <GameBoard test={10} />
-                <Player playerData={this.state.players[0]}/>
-                <Player playerData={this.state.players[1]}/>
+                <Player playerData={this.state.players.player1} />
+                <Player playerData={this.state.players.player2} />
             </>
         )
     }
 }
+
+
 
 export default GameApp
