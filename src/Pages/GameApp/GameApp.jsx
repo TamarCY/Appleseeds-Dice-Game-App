@@ -16,14 +16,14 @@ class GameApp extends react.Component {
             players: {
                 player1: {
                     id: 1,
-                    currentScore: 5,
+                    currentScore: 0,
                     sumScore: 0,
                     isActive: true,
                     isWinner: false
                 },
                 player2: {
                     id: 2,
-                    currentScore: 2,
+                    currentScore: 0,
                     sumScore: 0,
                     isActive: false,
                     isWinner: false
@@ -37,9 +37,9 @@ class GameApp extends react.Component {
         event.target.id === "rollDice" && this.rollDice();
         event.target.id === "hold" && this.hold();
     }
-    
+
     newGame = () => {
-        this.setState(   
+        this.setState(
             (prevState) =>
             ({
                 dices: prevState.dices.map((el) =>
@@ -65,7 +65,7 @@ class GameApp extends react.Component {
                     isWinner: false
                 }
             },
-            dices: prevState.dices.map((el)=>(null))
+            dices: prevState.dices.map((el) => (null))
 
         }
         )
@@ -75,11 +75,12 @@ class GameApp extends react.Component {
 
     rollDice = () => {
         const dicesResult = this.state.dices.map((el) =>
-                    (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
-                )
-        const dicesSum = dicesResult.reduce((prev,curr) => prev+curr);
+            (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
+        )
+        const dicesSum = dicesResult.reduce((prev, curr) => prev + curr);
         const player = this.state.activePlayer;
-    
+        const playerCurrentScore = this.state.players[player].currentScore + dicesSum;
+
         // TODO: change to reusable and not hard coded
         if (dicesResult[0] === 6 && dicesResult[1] === 6) {
             this.hold()
@@ -90,17 +91,12 @@ class GameApp extends react.Component {
                     ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
                     [player]: {
                         ...prevState.players[player],
-                        sumScore: dicesSum,
+                        currentScore: playerCurrentScore
                     }
-                },
+                }
             }
             )
             )
-            // this.setState({
-            //     dices: dicesResult,
-            //     currentScore: dicesSum              
-
-            // })
         }
         console.log(dicesResult)
 
@@ -118,7 +114,7 @@ class GameApp extends react.Component {
 
 
     hold = () => {
-        this.setState({gameOver:true}, ()=>{console.log (this.state.gameOver)});
+        this.setState({ gameOver: true }, () => { console.log(this.state.gameOver) });
     }
 
 
@@ -126,7 +122,7 @@ class GameApp extends react.Component {
         return (
             <div className="GameApp">
                 <Player playerData={this.state.players.player1} />
-                <GameBoard callBack={this.callBackFunctions} dices={this.state.dices}/>
+                <GameBoard callBack={this.callBackFunctions} dices={this.state.dices} />
                 <Player playerData={this.state.players.player2} />
             </div>
         )
