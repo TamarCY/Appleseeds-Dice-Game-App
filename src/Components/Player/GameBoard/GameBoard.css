@@ -1,0 +1,12 @@
+
+
+.GameBoard-dice {
+    height: 70px;
+    width: 70px;
+    border: solid;
+}
+
+.GameBoard-div>div {
+    margin:5px;
+}
+

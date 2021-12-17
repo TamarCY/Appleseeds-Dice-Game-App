@@ -1,0 +1,9 @@
+.GameApp {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.GameApp>div{
+    margin: 10px;
+}

@@ -1,8 +1,10 @@
 import react from "react";
 import GameBoard from "../../Components/Player/GameBoard/GameBoard";
 import Player from "../../Components/Player/Player/Player";
+import "./GameApp.css"
 
-
+const DICE_MIN = 1;
+const DICE_MAX = 6;
 class GameApp extends react.Component {
     constructor() {
         super();
@@ -56,22 +58,29 @@ class GameApp extends react.Component {
     }
 
 
+    rollDice = () => {
+        this.setState(   
+            (prevState) =>
+            ({
+                dices: prevState.dices.map((el) =>
+                    (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
+                )
+            })
+        )
+        // console.log("in the roll dice func", this.props) //why is this empty?
+    }
 
 
 
 
-   
 
     render() {
         return (
-            <>
-                <div>GameApp component!
-
-                </div>
-                <GameBoard newGame={this.newGame} />
+            <div className="GameApp">
                 <Player playerData={this.state.players.player1} />
+                <GameBoard newGame={this.rollDice} dices={this.state.dices}/>
                 <Player playerData={this.state.players.player2} />
-            </>
+            </div>
         )
     }
 }
