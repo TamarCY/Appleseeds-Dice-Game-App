@@ -11,6 +11,7 @@ class GameApp extends react.Component {
         this.state = {
             pointsToWin: 100,
             dices: [null, null],
+            activePlayer: "player1",
             gameOver: false,
             players: {
                 player1: {
@@ -73,20 +74,51 @@ class GameApp extends react.Component {
 
 
     rollDice = () => {
-        this.setState(   
-            (prevState) =>
-            ({
-                dices: prevState.dices.map((el) =>
+        const dicesResult = this.state.dices.map((el) =>
                     (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
                 )
-            })
-        )
+        const dicesSum = dicesResult.reduce((prev,curr) => prev+curr);
+        const player = this.state.activePlayer;
+    
+        // TODO: change to reusable and not hard coded
+        if (dicesResult[0] === 6 && dicesResult[1] === 6) {
+            this.hold()
+        } else {
+            this.setState((prevState) => ({
+                dices: dicesResult,
+                players: {
+                    ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
+                    [player]: {
+                        ...prevState.players[player],
+                        sumScore: dicesSum,
+                    }
+                },
+            }
+            )
+            )
+            // this.setState({
+            //     dices: dicesResult,
+            //     currentScore: dicesSum              
+
+            // })
+        }
+        console.log(dicesResult)
+
+
+        // this.setState(   
+        //     (prevState) =>
+        //     ({
+        //         dices: prevState.dices.map((el) =>
+        //             (Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1) + DICE_MIN))
+        //         )
+        //     }), () => (console.log(this.state.dices[0]))
+        // )
         // console.log("in the roll dice func", this.props) // TODO: why is this empty?
     }
 
 
     hold = () => {
-        console.log ("hold")
+        this.setState({gameOver:true}, ()=>{console.log (this.state.gameOver)});
     }
 
 
