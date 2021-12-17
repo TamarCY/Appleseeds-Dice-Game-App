@@ -16,6 +16,7 @@ class GameBoard extends react.Component {
                 <div>GameBoard {this.props.test}</div>
                 <Dice />
                 <Dice />
+                <button className="new-game-btn" onClick={()=>(this.props.newGame())}>New Game</button>
             </div>
         )
     }

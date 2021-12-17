@@ -6,7 +6,6 @@ class Player extends react.Component {
     //     super(props)
     // }
     render (){
-        console.log(this.props.playerData)
         return (
             <div>
             <div>

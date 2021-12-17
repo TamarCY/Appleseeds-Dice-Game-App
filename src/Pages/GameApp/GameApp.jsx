@@ -30,6 +30,7 @@ class GameApp extends react.Component {
     }
 
     newGame = () => {
+        console.log("new game")
         this.setState((prevState) => ({
             players: {
                 ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
@@ -55,7 +56,7 @@ class GameApp extends react.Component {
     }
 
 
-    
+
 
 
 
@@ -67,7 +68,7 @@ class GameApp extends react.Component {
                 <div>GameApp component!
 
                 </div>
-                <GameBoard test={10} />
+                <GameBoard newGame={this.newGame} />
                 <Player playerData={this.state.players.player1} />
                 <Player playerData={this.state.players.player2} />
             </>
