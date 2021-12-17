@@ -2,9 +2,9 @@ import react from "react";
 
 
 class Player extends react.Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props)
+    // }
     render (){
         console.log(this.props.playerData)
         return (
