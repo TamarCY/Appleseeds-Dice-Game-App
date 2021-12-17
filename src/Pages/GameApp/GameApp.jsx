@@ -1,4 +1,6 @@
 import react from "react";
+import GameBoard from "../../Components/Player/GameBoard/GameBoard";
+import Player from "../../Components/Player/Player/Player";
 
 
 class GameApp extends react.Component {
@@ -7,7 +9,14 @@ class GameApp extends react.Component {
     // }
     render (){
         return (
-        <div>GameApp component</div>
+        <>
+        <div>GameApp component!
+        
+        </div>
+        <GameBoard/>Í
+        <Player/>
+        <Player/>
+        </>
         )
     }
 }
