@@ -1,6 +1,6 @@
 import react from "react";
 import GameOverMessage from "../../Components/GameOverMessage/GameOverMessage";
-import GameBoard from "../../Components/Player/GameBoard/GameBoard";
+import GameBoard from "../../Components/GameBoard/GameBoard";
 import Player from "../../Components/Player/Player/Player";
 import "./GameApp.css"
 
@@ -102,7 +102,7 @@ class GameApp extends react.Component {
         this.setState({
             gameOver: true
         })
-        
+
         // TODO: change this.newGame() to reset code. maybe disable the roll and hold buttons, or make them disappear
     }
 
@@ -168,7 +168,7 @@ class GameApp extends react.Component {
         return (
             <div className="GameApp">
                 <Player playerData={this.state.players.player1} />
-                <GameBoard callBack={this.callBackFunctions} dices={this.state.dices} />
+                <GameBoard callBack={this.callBackFunctions} dices={this.state.dices} gameOver={this.state.gameOver}/>
                 <Player playerData={this.state.players.player2} />
                 <GameOverMessage winner={this.state.activePlayer} displayMessage={this.state.gameOver}/>
 
