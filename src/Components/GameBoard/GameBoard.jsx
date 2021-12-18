@@ -70,9 +70,9 @@ class GameBoard extends react.Component {
                         onClick={(e) => (this.props.callBack(e))}>
                         Hold
                     </button>
-                    <div className="GameBoard-points">
+                </div>
+                <div className="GameBoard-points">
                         You need {this.props.pointsToWin} points to win
-                    </div>
                 </div>
 
             </div>
