@@ -3,7 +3,7 @@ import './GameOverMessage.css'
 
 function GameOverMessage (props) {
     return (
-        <div className={props.displayMessage && "GameOverMessage"}>
+        <div className={`GameOverMessage ${props.displayMessage && "GameOverMessage-display"}`}>
             The Winner is {props.winner}
         </div>
     )

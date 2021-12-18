@@ -41,6 +41,7 @@ class GameApp extends react.Component {
 
     newGame = () => {
         this.setState((prevState) => ({
+            gameOver: false,
             players: {
                 ...prevState.players,  // copy all other key-value pairs of object inside players (here the aren't any)
                 player1: {
@@ -98,8 +99,11 @@ class GameApp extends react.Component {
 
     gameOver = () => {
         console.log("The winner is", this.state.activePlayer)
+        this.setState({
+            gameOver: true
+        })
+        
         // TODO: change this.newGame() to reset code. maybe disable the roll and hold buttons, or make them disappear
-        this.newGame()
     }
 
     isWinner = () => {
@@ -166,7 +170,7 @@ class GameApp extends react.Component {
                 <Player playerData={this.state.players.player1} />
                 <GameBoard callBack={this.callBackFunctions} dices={this.state.dices} />
                 <Player playerData={this.state.players.player2} />
-                <GameOverMessage winner={this.state.activePlayer} displayMessage={true}/>
+                <GameOverMessage winner={this.state.activePlayer} displayMessage={this.state.gameOver}/>
 
             </div>
         )
