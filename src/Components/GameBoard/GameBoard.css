@@ -25,8 +25,8 @@
 }
 
 .GameBoard-buttons>button {
-    margin: 10px auto;
-    font-size: 0.6rem;
+    margin: 20px auto;
+    font-size: 0.9rem;
     width: 60%;
 }
 
@@ -69,7 +69,8 @@ width: 100%;
     .GameBoard-buttons>button {
         margin: 5px;
         width: 60%;
-        font-size: 1.8rem;
+        height: 30;
+        font-size: 2rem;
     }
 
     .GameBoard-new-btn{
