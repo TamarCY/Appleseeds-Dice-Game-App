@@ -3,20 +3,20 @@
     font-family: 'Raleway', sans-serif;
     text-align: center;
     font-size: 3vw;
+    margin: 0;
 }
 
 .GameApp {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    height: 100vh;
+
 }
 
 .GameApp>div{
-    margin: 10px;
+    margin: 20px;
 }
 
-.GameBoard-win {
-    width: inherit
-}
+
 
 

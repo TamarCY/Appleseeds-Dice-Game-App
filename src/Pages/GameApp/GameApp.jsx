@@ -74,7 +74,7 @@ class GameApp extends react.Component {
         console.log("current score", playerCurrentScore)
 
         // TODO: change to reusable and not hard coded
-        if (dicesResult[0] === 6 || dicesResult[1] === 6) {
+        if (dicesResult[0] === 6 && dicesResult[1] === 6) {
             this.setState((prevState) => ({
                 dices: dicesResult,
                 players: {
@@ -169,10 +169,7 @@ class GameApp extends react.Component {
                     pointsToWin={this.state.pointsToWin}
                 />
                 <Player playerData={this.state.players.player2} />
-                {/* <GameOverMessage
-          winner={this.state.activePlayer}
-          displayMessage={this.state.gameOver}
-        /> */}
+             
             </div>
         );
     }
