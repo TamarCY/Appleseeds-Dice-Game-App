@@ -1,0 +1,14 @@
+.GameOverMessage{
+    height: 30vh;
+    width: 50vw;
+    position: absolute;
+    top: 10%;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.GameOverMessage-hide{
+    display: block;
+}

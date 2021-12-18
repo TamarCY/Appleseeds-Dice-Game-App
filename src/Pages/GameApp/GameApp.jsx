@@ -1,4 +1,5 @@
 import react from "react";
+import GameOverMessage from "../../Components/GameOverMessage/GameOverMessage";
 import GameBoard from "../../Components/Player/GameBoard/GameBoard";
 import Player from "../../Components/Player/Player/Player";
 import "./GameApp.css"
@@ -165,6 +166,8 @@ class GameApp extends react.Component {
                 <Player playerData={this.state.players.player1} />
                 <GameBoard callBack={this.callBackFunctions} dices={this.state.dices} />
                 <Player playerData={this.state.players.player2} />
+                <GameOverMessage winner={this.state.activePlayer} displayMessage={true}/>
+
             </div>
         )
     }
@@ -173,3 +176,6 @@ class GameApp extends react.Component {
 
 
 export default GameApp
+
+
+
