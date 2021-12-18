@@ -10,3 +10,7 @@
     margin:5px;
 }
 
+.GameBoard-buttons {
+    display: flex;
+    flex-direction: column;
+}

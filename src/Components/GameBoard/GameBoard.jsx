@@ -37,26 +37,28 @@ class GameBoard extends react.Component {
                         this.displayWinner() :
                         this.displayDice()}
                 </div>
-                <button
-                    className="GameBoard-new-btn"
-                    id="newGame"
-                    onClick={(e) => (this.props.callBack(e))}>
-                    New Game
-                </button>
-                <button
-                    disabled={this.props.gameOver}
-                    className="GameBoard-roll-btn"
-                    id="rollDice"
-                    onClick={(e) => (this.props.callBack(e))}>
-                    Roll
-                </button>
-                <button
-                    disabled={this.props.gameOver}
-                    className="GameBoard-hold-btn"
-                    id="hold"
-                    onClick={(e) => (this.props.callBack(e))}>
-                    Hold
-                </button>
+                <div className="GameBoard-buttons">
+                    <button
+                        className="GameBoard-new-btn"
+                        id="newGame"
+                        onClick={(e) => (this.props.callBack(e))}>
+                        New Game
+                    </button>
+                    <button
+                        disabled={this.props.gameOver}
+                        className="GameBoard-roll-btn"
+                        id="rollDice"
+                        onClick={(e) => (this.props.callBack(e))}>
+                        Roll
+                    </button>
+                    <button
+                        disabled={this.props.gameOver}
+                        className="GameBoard-hold-btn"
+                        id="hold"
+                        onClick={(e) => (this.props.callBack(e))}>
+                        Hold
+                    </button>
+                </div>
 
             </div>
             //TODO: dice component

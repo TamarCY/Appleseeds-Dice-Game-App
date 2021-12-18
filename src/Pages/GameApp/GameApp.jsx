@@ -10,7 +10,7 @@ class GameApp extends react.Component {
   constructor() {
     super();
     this.state = {
-      pointsToWin: 20,
+      pointsToWin: 10,
       dices: [null, null],
       activePlayer: "player1",
       gameOver: false,
@@ -69,12 +69,21 @@ class GameApp extends react.Component {
     );
     const dicesSum = dicesResult.reduce((prev, curr) => prev + curr);
     const currentPlayer = this.state.activePlayer;
-    const playerCurrentScore =
-      this.state.players[currentPlayer].currentScore + dicesSum;
+    const playerCurrentScore = 
+    this.state.players[currentPlayer].currentScore + dicesSum;
+    console.log("current score", playerCurrentScore)
 
     // TODO: change to reusable and not hard coded
-    if (dicesResult[0] === 6 && dicesResult[1] === 6) {
-      this.hold();
+    if (dicesResult[0] === 6 || dicesResult[1] === 6) {
+        this.setState((prevState) => ({
+            dices: dicesResult,
+            players: {
+                ...prevState.players,
+            [currentPlayer]: {
+                ...prevState.players[currentPlayer],
+                currentScore: 0,
+              }},
+        }), ()=>this.hold());
     } else {
       this.setState((prevState) => ({
         dices: dicesResult,
@@ -89,6 +98,7 @@ class GameApp extends react.Component {
     }
     console.log(dicesResult);
   };
+
 
   gameOver = () => {
     console.log("The winner is", this.state.activePlayer);
