@@ -1,16 +1,50 @@
 
+.GameBoard-div{
+    height: 80vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .GameBoard-dice {
-    height: 70px;
-    width: 70px;
-    border: solid;
+    max-height: 200px;
+    border: 1px solid;
+    margin: 10px;
 }
 
 .GameBoard-div>div {
-    margin:5px;
+    margin:10px;
 }
 
 .GameBoard-buttons {
     display: flex;
     flex-direction: column;
+}
+
+.GameBoard-buttons>button {
+    margin: 10px auto;
+    font-size: 0.6rem;
+    width: 60%;
+
+
+}
+
+.GameBoard-images {
+width: 100%;
+}
+
+.GameBoard-win {
+    height: 100px;
+}
+
+.GameBoard-points{
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.GameBoard-new-btn{
+    width: 70%;
+    margin: 0 auto;
 }

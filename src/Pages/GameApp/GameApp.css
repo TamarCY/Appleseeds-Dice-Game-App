@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@275&family=Readex+Pro&family=Roboto:wght@100&family=Rubik:wght@300;500;700;800&display=swap');
+* {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 3vw;
+}
+
 .GameApp {
     display: flex;
     justify-content: center;
@@ -7,3 +14,9 @@
 .GameApp>div{
     margin: 10px;
 }
+
+.GameBoard-win {
+    width: inherit
+}
+
+
