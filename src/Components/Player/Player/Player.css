@@ -1,96 +1,86 @@
-
 .Player {
-    width: 30%;
-    padding: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 5px;
-
+  width: 30%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
 }
 
 .Player-active {
-    background-color: rgba(214, 214, 214, 0.4);
+  background-color: rgba(214, 214, 214, 0.4);
 }
 
 .Player-name {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .Player-active-name {
-    font-weight: 800;
-    font-size: 1.7rem;
+  font-weight: 800;
+  font-size: 1.7rem;
 }
 
 .Player-current {
-    height: 20%;
-    width: 50%;
-    /* border: 1px solid; */
-    margin: 8px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(234,77,76,0.3);
-    border-radius: 10px;
-    padding: 20px;
-
+  height: 20%;
+  width: 50%;
+  margin: 8px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(234, 77, 76, 0.3);
+  border-radius: 10px;
+  padding: 20px;
 }
-
 
 .Player-sum {
-    /* border: 1px solid; */
-    height: 30%;
-    width: 60%;
-    margin:0 auto;
+  height: 30%;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(214, 214, 214, 0.4);
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .Player {
+    width: 100%;
+    height: 25%;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-evenly;
+  }
+
+  .Player-current {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(214,214,214,0.4);
-    border-radius: 10px;
-}
-
-@media only screen and (max-width: 600px){
-    .Player {
-        width: 100%;
-        height: 25%;
-        flex-direction: row;
-        padding: 0;
-        justify-content: space-evenly;
-    }
-
-    .Player-current {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 20%;
-        height: 100%;
-        font-size: 2.1rem;
-        border-radius: 0px;
-        margin: 0;
-        padding: 0;
-        background-color: inherit;
-
-    
-    }
-    .Player-sum {
-        width:20%;
-        height: 100%;
-        border-radius: 0px;
-        font-size: 2.9rem;
-        background-color: none;
-        margin: 0;
-        background-color: inherit;
-
-    }
-    .Player-name {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.3rem;
-    }
-    .Player-active {
-        background-color: rgb(214, 214, 214);
-        border-radius: 0;
-    }
-    
+    width: 20%;
+    height: 100%;
+    font-size: 2.1rem;
+    border-radius: 0px;
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+  }
+  .Player-sum {
+    width: 20%;
+    height: 100%;
+    border-radius: 0px;
+    font-size: 2.9rem;
+    background-color: none;
+    margin: 0;
+    background-color: inherit;
+  }
+  .Player-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+  }
+  .Player-active {
+    background-color: rgb(214, 214, 214);
+    border-radius: 0;
+  }
 }

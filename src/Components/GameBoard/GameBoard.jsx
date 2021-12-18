@@ -1,5 +1,4 @@
 import react from "react";
-// import Dice from "../../../Common/Dice/Dice";
 import './GameBoard.css';
 import dices from '../../Assets/images/fingers.png'
 import dice1 from '../../Assets/images/dice-1.png'
@@ -11,7 +10,7 @@ import dice6 from '../../Assets/images/dice-6.png'
 import win from '../../Assets/images/win.png'
 
 
-const diceImages = [dices,dice1, dice2, dice3, dice4, dice5, dice6]
+const diceImages = [dices, dice1, dice2, dice3, dice4, dice5, dice6]
 
 class GameBoard extends react.Component {
     constructor(props) {
@@ -26,9 +25,6 @@ class GameBoard extends react.Component {
             <div>
                 <img className="GameBoard-dice" src={diceImages[this.props.dices[0]]} alt="dice 1" />
                 <img className="GameBoard-dice" src={diceImages[this.props.dices[1]]} alt="dice 1" />
-
-                {/* <div >{this.props.dices[0]}</div>
-                <div className="GameBoard-dice">{this.props.dices[1]}</div> */}
             </div>
         )
     }
@@ -45,12 +41,12 @@ class GameBoard extends react.Component {
         return (
             <div className="GameBoard-div">
                 <button
-                        className="GameBoard-new-btn"
-                        id="newGame"
-                        onClick={(e) => (this.props.callBack(e))}>
-                        New Game
-                    </button>
-                <div className = "GameBoard-images">
+                    className="GameBoard-new-btn"
+                    id="newGame"
+                    onClick={(e) => (this.props.callBack(e))}>
+                    New Game
+                </button>
+                <div className="GameBoard-images">
                     {this.props.gameOver ?
                         this.displayWinner() :
                         this.displayDice()}
@@ -72,12 +68,11 @@ class GameBoard extends react.Component {
                     </button>
                 </div>
                 <div className="GameBoard-points">
-                        You need {this.props.pointsToWin} points to win
+                    You need {this.props.pointsToWin} points to win
                 </div>
 
             </div>
-            //TODO: dice component
-            // TODO: is it better to send one call back function to all the buttons or its better one for each?
+
         )
     }
 }

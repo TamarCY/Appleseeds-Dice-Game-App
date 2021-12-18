@@ -1,5 +1,4 @@
 import react from "react";
-// import GameOverMessage from "../../Components/GameOverMessage/GameOverMessage";
 import GameBoard from "../../Components/GameBoard/GameBoard";
 import Player from "../../Components/Player/Player/Player";
 import "./GameApp.css";
@@ -43,7 +42,7 @@ class GameApp extends react.Component {
         this.setState((prevState) => ({
             gameOver: false,
             players: {
-                ...prevState.players, // copy all other key-value pairs of object inside players (here the aren't any)
+                ...prevState.players,
                 player1: {
                     ...prevState.players.player1,
                     currentScore: 0,
@@ -73,7 +72,6 @@ class GameApp extends react.Component {
             this.state.players[currentPlayer].currentScore + dicesSum;
         console.log("current score", playerCurrentScore)
 
-        // TODO: change to reusable and not hard coded
         if (dicesResult[0] === 6 && dicesResult[1] === 6) {
             this.setState((prevState) => ({
                 dices: dicesResult,
@@ -89,7 +87,7 @@ class GameApp extends react.Component {
             this.setState((prevState) => ({
                 dices: dicesResult,
                 players: {
-                    ...prevState.players, // copy all other key-value pairs of object inside players (here the aren't any)
+                    ...prevState.players,
                     [currentPlayer]: {
                         ...prevState.players[currentPlayer],
                         currentScore: playerCurrentScore,
@@ -107,25 +105,15 @@ class GameApp extends react.Component {
             gameOver: true,
         });
 
-        // TODO: change this.newGame() to reset code. maybe disable the roll and hold buttons, or make them disappear
-    };
-
-    isWinner = () => {
-        this.state.players[this.state.activePlayer] > this.state.pointsToWin
-            ? console.log("The winner is", this.state.activePlayer)
-            : console.log("no");
-        //gameReset
     };
 
     hold = () => {
-        // TODO: change to no vars?
         const currentPlayer = this.state.activePlayer;
         const notCurrentPlayer =
             currentPlayer === "player1" ? "player2" : "player1";
         const currentSumScore =
             this.state.players[currentPlayer].currentScore +
             this.state.players[currentPlayer].sumScore;
-        // TODO: can I change the 2 long this.setStates?
         if (currentSumScore > this.state.pointsToWin) {
             this.setState((prevState) => ({
                 players: {
@@ -169,7 +157,7 @@ class GameApp extends react.Component {
                     pointsToWin={this.state.pointsToWin}
                 />
                 <Player playerData={this.state.players.player2} />
-             
+
             </div>
         );
     }
